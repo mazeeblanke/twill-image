@@ -204,6 +204,7 @@ class Wrapper {
     } else {
       this.isLoaded = true;
     }
+    this.main.dispatchEvent(new CustomEvent('twill-image:loaded'));
   }
 }
 
