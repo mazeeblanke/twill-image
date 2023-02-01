@@ -114,7 +114,10 @@ class Wrapper {
     this.cacheKey = JSON.stringify(this.main.src || this.main.dataset.src);
     this.revealed = false;
 
-    this.main.onload = (e) => this.load(e.currentTarget);
+    this.main.onload = (e) => {
+      this.load(e.currentTarget);
+      this.main.dispatchEvent(new CustomEvent('twill-image:loaded'));
+    }
 
     if (this.isLoading) {
       this.reveal();
@@ -204,7 +207,6 @@ class Wrapper {
     } else {
       this.isLoaded = true;
     }
-    this.main.dispatchEvent(new CustomEvent('twill-image:loaded'));
   }
 }
 
